@@ -6,12 +6,20 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
+const auth = require("../middleware/auth");
 
 // @route   GET api/auth
 // @desc   Recebe usuario logado
 // @access Private
-router.get("/", (req, res) => {
-  res.send("Recebe usuario logado");
+router.get("/", auth, async (req, res) => {
+  try {
+    // Recebe usuário da DB
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).status("Erro no servidor");
+  }
 });
 
 // @route   POST api/auth
