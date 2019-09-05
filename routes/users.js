@@ -45,7 +45,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      //JWT
+      //JWT cria um ID para usuário na sessão do app
       const payload = {
         user: {
           id: user.id
