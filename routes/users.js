@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
@@ -18,12 +19,35 @@ router.post(
       { min: 6 }
     )
   ],
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    res.send("Passou!");
+    // Captura dados
+    const { name, email, password } = req.body;
+    try {
+      // Verificar usuário com email repetido
+      let user = await User.findOne({ email });
+      if (user) {
+        return res.status(400).json({ msg: "Usuário já existente" });
+      }
+      user = new User({
+        name,
+        email,
+        password
+      });
+
+      //Encripta password => método
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+
+      await user.save();
+      res.send("Usuário registrado");
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Erro no servidor");
+    }
   }
 );
 
