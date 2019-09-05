@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Button,
@@ -16,8 +17,13 @@ const NavBar = () => {
       <NavbarGroup align={Alignment.LEFT}>
         <NavbarHeading>Contact Keeper</NavbarHeading>
         <NavbarDivider />
-        <Button className={Classes.MINIMAL} icon="home" text="Home" />
-        <Button className={Classes.MINIMAL} icon="document" text="Contacts" />
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Button className={Classes.MINIMAL} icon="home" text="Home" />
+        </Link>
+        <Button className={Classes.MINIMAL} icon="person" text="Contacts" />
+        <Link to="/about" style={{ textDecoration: "none", color: "white" }}>
+          <Button className={Classes.MINIMAL} icon="help" text="About" />
+        </Link>
       </NavbarGroup>
     </Navbar>
   );
