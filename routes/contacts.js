@@ -6,9 +6,11 @@ const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
 const Contact = require("../models/Contact");
 
-// @route   GET api/contacts
-// @desc   Recebe todos contatos do usuario
-// @access Private
+/**
+ * @route  GET api/contacts
+ * @desc   Recebe todos contatos do usuario
+ * @access Private
+ */
 router.get("/", auth, async (req, res) => {
   // Try-catch necessário para mongoose
   try {
@@ -26,23 +28,29 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// @route   POST api/contacts
-// @desc   Adiciona novo contato
-// @access Publico
+/**
+ * @route  POST api/contacts
+ * @desc   Adiciona novo contato
+ * @access Publico
+ */
 router.post("/", (req, res) => {
   res.send("Adiciona contato");
 });
 
-// @route   PUT api/contacts
-// @desc   Atualiza contatos
-// @access Privado
+/**
+ * @route   PUT api/contacts
+ * @desc   Atualiza contatos
+ * @access Privado
+ */
 router.put("/", (req, res) => {
   res.send("Atualiza contato");
 });
 
-// @route   DELETE api/contacts
-// @desc   Deleta contatos
-// @access Privado
+/**
+ * @route   DELETE api/contacts
+ * @desc   Deleta contatos
+ * @access Privado
+ */
 router.delete("/", (req, res) => {
   res.send("Deleta contato");
 });

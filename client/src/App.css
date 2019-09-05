@@ -4,7 +4,7 @@
 
 .App-background {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 84vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,4 +15,14 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
 }

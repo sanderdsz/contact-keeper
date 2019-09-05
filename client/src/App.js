@@ -15,6 +15,7 @@ import NavBar from "./layout/NavBar";
 // Páginas
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Footer from "./layout/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         </Switch>
         <NavBar />
         <div className="App-background" />
+        <Footer />
       </Fragment>
     </Router>
   );
