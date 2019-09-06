@@ -20,15 +20,14 @@ import Footer from "./layout/Footer";
 function App() {
   return (
     <Router>
+      <NavBar />
       <Fragment>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
         </Switch>
-        <NavBar />
-        <div className="App-background" />
-        <Footer />
       </Fragment>
+      <Footer />
     </Router>
   );
 }

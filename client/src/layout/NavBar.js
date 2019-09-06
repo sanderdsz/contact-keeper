@@ -1,5 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+import "./NavBar.css";
+// import Dialog from "./Dialog";
 
 import {
   Button,
@@ -11,22 +14,39 @@ import {
   NavbarHeading
 } from "@blueprintjs/core";
 
-const NavBar = () => {
-  return (
-    <Navbar className={Classes.DARK}>
-      <NavbarGroup align={Alignment.LEFT}>
-        <NavbarHeading>Contact Keeper</NavbarHeading>
-        <NavbarDivider />
-        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-          <Button className={Classes.MINIMAL} icon="home" text="Home" />
-        </Link>
-        <Button className={Classes.MINIMAL} icon="person" text="Contacts" />
-        <Link to="/about" style={{ textDecoration: "none", color: "white" }}>
-          <Button className={Classes.MINIMAL} icon="help" text="About" />
-        </Link>
-      </NavbarGroup>
-    </Navbar>
-  );
-};
+import Dialog from "./Dialog";
+
+class NavBar extends Component {
+  state = { isOpen: false };
+
+  render() {
+    return (
+      <div className="navbar">
+        <Navbar className={Classes.DARK}>
+          <NavbarGroup align={Alignment.LEFT}>
+            <NavbarHeading>Contact Keeper</NavbarHeading>
+            <NavbarDivider />
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              <Button className={Classes.MINIMAL} icon="home" text="Home" />
+            </Link>
+            <Button
+              onClick={e => this.setState({ isOpen: true })}
+              className={Classes.MINIMAL}
+              icon="person"
+              text="Contacts"
+            />
+            <Link
+              to="/about"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <Button className={Classes.MINIMAL} icon="help" text="About" />
+            </Link>
+          </NavbarGroup>
+        </Navbar>
+        <Dialog isOpen={this.state.isOpen} />
+      </div>
+    );
+  }
+}
 
 export default NavBar;
