@@ -17,18 +17,23 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Footer from "./layout/Footer";
 
+// Componentes
+import ContactState from "./components/context/contact/contactState";
+
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <Fragment>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-        </Switch>
-      </Fragment>
-      <Footer />
-    </Router>
+    <ContactState>
+      <Router>
+        <NavBar />
+        <Fragment>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+          </Switch>
+        </Fragment>
+        <Footer />
+      </Router>
+    </ContactState>
   );
 }
 
