@@ -1,5 +1,4 @@
 // Função que tem acesso a um request e response cycle que chega credenciais
-
 const jwt = require("jsonwebtoken");
 const config = require("config");
 

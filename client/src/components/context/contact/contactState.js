@@ -28,7 +28,7 @@ const ContactState = props => {
         name: "Sander Olivo",
         email: "sander@olivo.com",
         phone: "111-444-3333",
-        type: "personal"
+        type: "professional"
       }
     ]
   };
