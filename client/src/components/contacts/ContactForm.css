@@ -1,0 +1,25 @@
+:root {
+  --primary-color: #137cbd;
+  --dark-color: #293742;
+  --light-color: #bfccd6;
+  --danger-color: #db3737;
+  --success-color: #0f9960;
+}
+
+.text-primary {
+  color: var(--light-color);
+}
+
+.space {
+  margin: 5px;
+}
+
+.form {
+  margin-top: 12px;
+  width: 125px;
+  height: 50px;
+}
+
+.radio {
+  margin-top: 10px;
+}
