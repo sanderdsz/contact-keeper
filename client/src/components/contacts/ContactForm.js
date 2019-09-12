@@ -13,12 +13,13 @@ import "./ContactForm.css";
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
 
-  const { addContact, clearCurrent, updateCurrent, current } = contactContext;
+  const { addContact, updateCurrent, clearCurrent, current } = contactContext;
+
+  /*  Quando clicar no botão edit será
+       preenchido o formulário com (contact) */
 
   useEffect(() => {
     if (current !== null) {
-      /*  Quando clicar no botão edit será
-       preenchido o formulário com (contact) */
       setContact(current);
     } else {
       setContact({
@@ -51,16 +52,6 @@ const ContactForm = () => {
       updateCurrent(contact);
     }
     clearAll();
-    /*
-    contactContext.addContact(contact);
-    // Limpa formulário
-    setContact({
-      name: "",
-      email: "",
-      phone: "",
-      type: "personal"
-    });
-    */
   };
 
   const clearAll = () => {
