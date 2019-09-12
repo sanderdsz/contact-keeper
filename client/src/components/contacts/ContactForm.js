@@ -13,6 +13,23 @@ import "./ContactForm.css";
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
 
+  const { addContact, clearCurrent, updateCurrent, current } = contactContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      /*  Quando clicar no botão edit será
+       preenchido o formulário com (contact) */
+      setContact(current);
+    } else {
+      setContact({
+        name: "",
+        email: "",
+        phone: "",
+        type: "personal"
+      });
+    }
+  }, [contactContext, current]);
+
   const [contact, setContact] = useState({
     name: "",
     email: "",
@@ -28,6 +45,13 @@ const ContactForm = () => {
   // Função que realiza adição
   const onSubmit = e => {
     e.preventDefault();
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateCurrent(contact);
+    }
+    clearAll();
+    /*
     contactContext.addContact(contact);
     // Limpa formulário
     setContact({
@@ -36,12 +60,18 @@ const ContactForm = () => {
       phone: "",
       type: "personal"
     });
+    */
+  };
+
+  const clearAll = () => {
+    clearCurrent();
   };
 
   return (
     <form onSubmit={onSubmit}>
       <div className="form">
         <div className="text-primary">
+          {current ? "Edit Contact" : "Add Contact"}
           {/* Formulários */}
 
           <input
@@ -94,7 +124,15 @@ const ContactForm = () => {
               Professional
             </label>
           </div>
-          <input type="submit" value="Add Contact" />
+          <input
+            type="submit"
+            value={current ? "Update Contact" : "Add Contact"}
+          />
+          {current && (
+            <div>
+              <button onClick={clearAll}>Clear</button>
+            </div>
+          )}
         </div>
       </div>
     </form>
