@@ -15,6 +15,8 @@ import NavBar from "./layout/NavBar";
 // Páginas
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 import Footer from "./layout/Footer";
 
 // Componentes
@@ -31,6 +33,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
             </Switch>
           </Fragment>
           <Footer />
