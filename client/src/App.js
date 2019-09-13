@@ -19,21 +19,24 @@ import Footer from "./layout/Footer";
 
 // Componentes
 import ContactState from "./components/context/contact/contactState";
+import AuthState from "./components/context/auth/authState";
 
 function App() {
   return (
-    <ContactState>
-      <Router>
-        <NavBar />
-        <Fragment>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-          </Switch>
-        </Fragment>
-        <Footer />
-      </Router>
-    </ContactState>
+    <AuthState>
+      <ContactState>
+        <Router>
+          <NavBar />
+          <Fragment>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          </Fragment>
+          <Footer />
+        </Router>
+      </ContactState>
+    </AuthState>
   );
 }
 
