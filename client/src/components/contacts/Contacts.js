@@ -3,10 +3,9 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ContactContext from "../context/contact/contactContext";
 import ContactItem from "./ContactItem";
 
-import "./Contact.css";
-
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
+
   const { contacts, filtered } = contactContext;
 
   if (contacts.length === 0) {

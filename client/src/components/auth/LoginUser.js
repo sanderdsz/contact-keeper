@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import "./LoginUser.css";
-
 const LoginUser = () => {
   const [user, setUser] = useState({
     email: "",
@@ -18,36 +16,29 @@ const LoginUser = () => {
   };
 
   return (
-    <div className="text-primary">
+    <div className="form-container">
       <h1>
-        Account <span>Login</span>
+        Account <span className="text-primary">Login</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="email">E-mail Address</label>
-          <div>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={onChange}
-            ></input>
-          </div>
+          <label htmlFor="email">Email Address</label>
+          <input type="email" name="email" value={email} onChange={onChange} />
         </div>
-
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <div>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-            ></input>
-          </div>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={onChange}
+          />
         </div>
-
-        <input type="submit" value="Register" />
+        <input
+          type="submit"
+          value="Login"
+          className="btn btn-primary btn-block"
+        />
       </form>
     </div>
   );

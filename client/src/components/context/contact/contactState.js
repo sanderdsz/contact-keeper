@@ -1,19 +1,15 @@
 import React, { useReducer } from "react";
 import uuid from "uuid";
 import ContactContext from "./contactContext";
-import ContactReducer from "./contactReducer";
-
+import contactReducer from "./contactReducer";
 import {
-  GET_CONTACTS,
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_CURRENT,
+  UPDATE_CONTACT,
   FILTER_CONTACTS,
-  CLEAR_CONTACTS,
-  CLEAR_FILTER,
-  CONTACT_ERROR
+  CLEAR_FILTER
 } from "../types";
 
 const ContactState = props => {
@@ -21,16 +17,23 @@ const ContactState = props => {
     contacts: [
       {
         id: 1,
-        name: "Sabrina Olivo",
-        email: "sabrina@olivo.com",
-        phone: "111-222-3333",
+        name: "Jill Johnson",
+        email: "jill@gmail.com",
+        phone: "111-111-1111",
         type: "personal"
       },
       {
         id: 2,
-        name: "Sander Olivo",
-        email: "sander@olivo.com",
-        phone: "111-444-3333",
+        name: "Sara Watson",
+        email: "sara@gmail.com",
+        phone: "222-222-2222",
+        type: "personal"
+      },
+      {
+        id: 3,
+        name: "Harry White",
+        email: "harry@gmail.com",
+        phone: "333-333-333",
         type: "professional"
       }
     ],
@@ -38,40 +41,40 @@ const ContactState = props => {
     filtered: null
   };
 
-  const [state, dispatch] = useReducer(ContactReducer, initialState);
+  const [state, dispatch] = useReducer(contactReducer, initialState);
 
-  // Adiciona contatos
+  // Add Contact
   const addContact = contact => {
     contact.id = uuid.v4();
     dispatch({ type: ADD_CONTACT, payload: contact });
   };
 
-  // Deleta contatos
+  // Delete Contact
   const deleteContact = id => {
     dispatch({ type: DELETE_CONTACT, payload: id });
   };
 
-  // Set contato atual
+  // Set Current Contact
   const setCurrent = contact => {
     dispatch({ type: SET_CURRENT, payload: contact });
   };
 
-  // Limpa contato atual
+  // Clear Current Contact
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
   };
 
-  // Update contato
-  const updateCurrent = contact => {
-    dispatch({ type: UPDATE_CURRENT, payload: contact });
+  // Update Contact
+  const updateContact = contact => {
+    dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
 
-  // Filtro de contatos
+  // Filter Contacts
   const filterContacts = text => {
     dispatch({ type: FILTER_CONTACTS, payload: text });
   };
 
-  // Limpa filtro de contatos
+  // Clear Filter
   const clearFilter = () => {
     dispatch({ type: CLEAR_FILTER });
   };
@@ -86,7 +89,7 @@ const ContactState = props => {
         deleteContact,
         setCurrent,
         clearCurrent,
-        updateCurrent,
+        updateContact,
         filterContacts,
         clearFilter
       }}
