@@ -1,28 +1,29 @@
 {
-  "name": "contact-keeper-node",
-  "version": "1.0.0",
-  "description": "Contact Keeper Node.JS server",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "clientinstall": "npm install",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "author": "Sander Zuchinalli",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "config": "^3.2.2",
-    "express": "^4.17.1",
-    "express-validator": "^6.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.12",
-    "prop-types": "^15.7.2"
-  },
-  "devDependencies": {
-    "concurrently": "^4.1.2",
-    "nodemon": "^1.19.2"
-  }
+	"name": "contact-keeper-node",
+	"version": "1.0.0",
+	"description": "Contact Keeper Node.JS server",
+	"main": "index.js",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"client": "npm start --prefix client",
+		"clientinstall": "npm install",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+	},
+	"author": "Sander Zuchinalli",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"config": "^3.2.2",
+		"express": "^4.17.1",
+		"express-validator": "^6.2.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.6.12",
+		"prop-types": "^15.7.2"
+	},
+	"devDependencies": {
+		"concurrently": "^4.1.2",
+		"nodemon": "^1.19.2"
+	}
 }
