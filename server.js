@@ -10,10 +10,6 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) =>
-	res.json({ msg: 'Bem vindo à API do ContactKeeper' })
-);
-
 // Definir as rotas do app
 app.use('/api/contacts', require('./routes/contacts'));
 app.use('/api/auth', require('./routes/auth'));
